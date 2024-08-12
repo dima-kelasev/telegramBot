@@ -1,0 +1,55 @@
+# compiled output
+dist/
+build/
+reports/
+.scannerwork
+null
+
+# dependencies
+/node_modules
+
+# profiling files
+chrome-profiler-events.json
+speed-measure-plugin.json
+
+test-report.xml
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+.history/*
+
+
+# misc
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+yarn.lock
+testem.log
+/typings
+
+# System Files
+
+.env
+
+### react ###
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+*.sublime*
+
+psd
+thumb
+sketch
