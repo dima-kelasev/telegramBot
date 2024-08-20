@@ -1,6 +1,7 @@
 require('dotenv').config();
 const { Telegraf } = require('telegraf');
-const { getSmile } = require('./helper/get-smail')
+const { getSmile } = require('./helper/get-smile')
+const { getSmileForWind } = require('./helper/get-smile-for-wind')
 const axios = require('axios');
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -18,6 +19,7 @@ bot.hears('Привет', (ctx) => ctx.reply('привет привет а вы�
 bot.hears('Как дела?', (ctx) => ctx.reply('Я бот, по-этому дел нет'));
 bot.on ('message', async (ctx) => {
   if(ctx.message.location) {
+
     const headers = {
       'X-Yandex-Weather-Key': process.env.YANDEX_API_KEY
   };
@@ -27,10 +29,11 @@ bot.on ('message', async (ctx) => {
     const { temp, feels_like, wind_speed } = yandexResponse.data.fact
 
     ctx.reply(`За бортом сейчас  - ${temp} ${getSmile(temp)}\n` +
-              `Ощущается как - ${feels_like} ${getSmile(temp)}\n` + 
-              `Скорость ветра - ${wind_speed}`);
+              `Ощущается как - ${feels_like} ${getSmile(feels_like)}\n` + 
+              `Скорость ветра - ${wind_speed} ${getSmileForWind(wind_speed)}`);
   }
   } )
+
 bot.launch();
 
 process.once('SIGINT', () => bot.stop('SIGINT'));
