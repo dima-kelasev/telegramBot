@@ -8,6 +8,9 @@ null
 # dependencies
 /node_modules
 
+#
+/src/database/messages.db
+
 # profiling files
 chrome-profiler-events.json
 speed-measure-plugin.json
