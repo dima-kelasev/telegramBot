@@ -44,11 +44,13 @@ bot.command('getMyMessages', (ctx) => {
 
 bot.command('getAllUsersMessages', (ctx) => {
     const userId = ctx.message.from.id; 
+    console.log('ctx',ctx)
     getAllUsersMessages( (messages) => {
         if (messages.length === 0) {
             return ctx.reply('Нет сохраненных сообщений.');
         }
-        const formattedMessages = messages.map((msg) => `Сообщение: ${msg.message}\nВремя: ${msg.timestamp}`).join('\n\n');
+        console.log('messages',messages)
+        const formattedMessages = messages.map((msg) => `${userId === msg.user_id ? 'Мои сообщения:': 'Чужие сообщения:'} ${msg.message}\nВремя: ${msg.timestamp}`).join('\n\n');
         ctx.reply(formattedMessages);
     });
 });
